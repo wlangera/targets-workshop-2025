@@ -1,0 +1,32 @@
+title: Slides for the Research Institute for Nature and Forest (INBO)
+author: Thierry Onkelinx
+version: 0.0.1
+contributes:
+  formats:
+    revealjs:
+      theme: [default, slides.scss]
+      transition: slide
+      width: 1244
+      height: 700
+      navigation-mode: vertical
+      controls-layout: bottom-right
+      controls-tutorial: true
+      slide-number: c/t
+      show-slide-number: all
+      slide-level: 2
+      email-obfuscation: javascript
+      chalkboard: true
+      preview-links: true
+      output-file: index.html
+      df-print: kable
+      progress: true
+      template-partials:
+        - title-slide.html
+      format-resources:
+        - inbo-nl-kleur.png
+        - inbo-nl-wit.png
+        - vlaanderen-nl-naakt.png
+        - vlaanderen-nl-transparant.png
+        - vlaanderen-nl-vol.png
+      filters:
+        - reveal.lua

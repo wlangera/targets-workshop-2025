@@ -14,7 +14,7 @@ format:
   inbo-revealjs: default
 knitr:
   opts_chunk:
-    echo: false
+    echo: true
     message: false
     warning: false
 ---
@@ -23,19 +23,27 @@ knitr:
 
 - 10:00-10:30 Introductory presentation
 - 10:30-12:00 Exercises
-- 12:00-12:30 Extensions of targets
+- 12:00-12:30 Extensions of {targets}
 
-## Bullets
+<https://books.ropensci.org/targets/>
 
-When you click the **Render** button a document will be generated that includes:
+## Introduction
 
--   Content authored with markdown
--   Output from executable code
+### How to get started with {targets}
 
-## Code
+...
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+---
 
-```{r}
-1 + 1
-```
+### Branching
+
+...
+
+## Exercises
+
+...
+
+## Beyond {targets}
+
+- R Targetopia
+  - <https://wlandau.github.io/targetopia/>

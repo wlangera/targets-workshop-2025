@@ -7,7 +7,7 @@ Workshop of {[targets](https://books.ropensci.org/targets/)} R package INBO 2025
 To work on the exercises, install the following packages.
 
 ```r
-install.packages(c("targets", "tarchetypes", "frictionless"))
+install.packages(c("targets", "tarchetypes", "frictionless", "here"))
 ```
 
 The following packages are suggested for data handling and visualisation.

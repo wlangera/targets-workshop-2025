@@ -1,0 +1,68 @@
+---
+title: "The {targets} pipeline tool for R"
+subtitle: "Monthly presentations BMK"
+date: 2025-05-13
+author:
+  - name:
+      given: Ward
+      family: Langeraert
+    email: ward.langeraert@inbo.be
+    orcid: 0000-0002-5900-8109
+    corresponding: true
+lang: en
+format:
+  inbo-revealjs: default
+knitr:
+  opts_chunk:
+    echo: true
+    message: false
+    warning: false
+---
+
+## Workshop schedule
+
+- 10:00-10:30 Introductory presentation
+- 10:30-11:00 Extensions of {targets}
+- 11:00-12:30 Exercises
+
+
+<https://books.ropensci.org/targets/>
+
+# Introduction
+## What is {targets}?
+
+- **Pipeline tool** for statistics and data science in R
+  - Coordinates complex, computationally intensive **R workflows**  
+  - Skips steps that are already up-to-date, saving time and resources
+- Ensures results stay **trustworthy** and **reproducible**
+
+## Getting started
+
+...
+
+
+## Branching
+
+...
+
+# Beyond {targets}
+## R Targetopia
+
+- <https://wlandau.github.io/targetopia/>
+
+## {tarchetypes} package
+
+...
+
+# Exercises
+## Challenge 1
+
+...
+
+## Challenge 2
+
+...
+
+## Challenge 3
+
+...

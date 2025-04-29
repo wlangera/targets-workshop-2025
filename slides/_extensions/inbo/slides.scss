@@ -1,0 +1,170 @@
+/*-- scss:defaults --*/
+
+// Fonts
+
+$font-family-sans-serif: Cailibri, Source Sans Pro, Helvetica, sans-serif;
+
+// Colors
+
+$inbo-blauw: #356196;
+$inbo-fuchsia: #c04384;
+$wit: #ffffff;
+$zwart: #000000;
+
+$inboqmd-slide-bg: $wit;
+$inboqmd-slide-color: $zwart;
+$inboqmd-level1-bg: $inbo-fuchsia;
+$inboqmd-level1-color: $zwart;
+$inboqmd-level2-color: $inbo-fuchsia;
+$inboqmd-link-color: $inbo-blauw;
+
+$body-bg: $inboqmd-slide-bg;
+$body-color: $inboqmd-slide-color;
+$link-color: $inboqmd-link-color;
+
+/*-- scss:rules --*/
+
+.trapezium {
+  z-index: -100;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
+  width: 100%;
+  height: 700px;
+  background: $inboqmd-level1-bg;
+}
+
+.reveal h1 {
+  color: $inboqmd-level1-color;
+  margin: 30% 10% 0% 10%;
+}
+
+.subtitle {
+  color: $inboqmd-level1-color;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.date {
+  color: $inboqmd-level1-color;
+  font-size: 1.5em;
+}
+
+.reveal h2 {
+  color: $inboqmd-level2-color;
+}
+
+.reveal h1.title {
+  margin: 0% 0% 0% 0%;
+  font-size: 2em;
+}
+
+.reveal .email {
+  color: $inboqmd-level1-color;
+}
+
+#title-slide {
+  text-align: left;
+}
+
+.reveal[data-navigation-mode="linear"] .title-slide h1 {
+  font-size: 2em;
+}
+
+.title-vlaanderen {
+  position: fixed;
+  right: 0;
+  top: -189px;
+  width: 250px;
+}
+
+.title-inbo {
+  position: fixed;
+  right: 0;
+  top: -90px;
+  width: 230px;
+  border: 10px;
+  border-color: $wit;
+  border-style: solid;
+  padding: 0;
+}
+
+.vl-tussen {
+  position: absolute;
+  left: 15px;
+  top: 5px;
+  width: 200px;
+}
+
+.inbo-tussen {
+  position: absolute;
+  left: 15px;
+  top: 100px;
+  width: 200px;
+}
+
+
+.vl-slide {
+  position: absolute;
+  left: 0%;
+  bottom: -5%;
+  width: 200px;
+  z-index: -1;
+}
+
+.sidebar {
+  background-color: $inboqmd-level1-bg;
+  position: fixed;
+  left: -70px;
+  bottom: -39px;
+  width: 50px;
+  height: 778px;
+}
+
+.sidebar-tussen {
+  background-color: $inboqmd-level1-color;
+  width: 51px;
+}
+
+.sidebar-url {
+  color: $inboqmd-level1-color;
+  transform: rotate(-90deg);
+  font-size: 0.5em;
+  position: fixed;
+  left: -150px;
+  bottom: 15%;
+}
+
+.sidebar-url-tussen {
+  color: $inboqmd-level1-bg;
+  transform: rotate(-90deg);
+  font-size: 0.5em;
+  position: fixed;
+  left: -150px;
+  bottom: 15%;
+}
+
+.fontsize-0-5 {
+  font-size: 0.5em;
+}
+
+.fontsize-0-6 {
+  font-size: 0.6em;
+}
+
+.fontsize-0-7 {
+  font-size: 0.7em;
+}
+
+.fontsize-0-8 {
+  font-size: 0.8em;
+}
+
+.fontsize-0-9 {
+  font-size: 0.9em;
+}
+
+.reveal code {
+  color: $inboqmd-slide-color;
+}

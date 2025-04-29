@@ -12,3 +12,4 @@ spelling:
   ignore:
   - .github
   - LICENSE.md
+  - slides/slides_files/libs/revealjs/plugin/reveal-chalkboard

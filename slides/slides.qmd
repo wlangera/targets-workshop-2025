@@ -29,9 +29,12 @@ knitr:
 <https://books.ropensci.org/targets/>
 
 # Introduction
-## What is {targets}
+## What is {targets}?
 
-...
+- **Pipeline tool** for statistics and data science in R
+  - Coordinates complex, computationally intensive **R workflows**  
+  - Skips steps that are already up-to-date, saving time and resources
+- Ensures results stay **trustworthy** and **reproducible**
 
 ## Getting started
 

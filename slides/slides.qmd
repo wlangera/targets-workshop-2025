@@ -306,8 +306,8 @@ lines <- readLines(here::here("source", "R", "example_functions.R"))
 
 # Find and modify the line with geom_point
 lines <- gsub(
-  "geom_point\\(aes\\(x = Temp, y = Ozone\\)\\)", 
-  "geom_point(aes(x = Temp, y = Ozone), size = 3)", 
+  "geom_point\\(aes\\(x = Temp, y = Ozone\\)\\)",
+  "geom_point(aes(x = Temp, y = Ozone), size = 3)",
   lines
 )
 
@@ -328,8 +328,8 @@ lines <- readLines(here::here("source", "R", "example_functions.R"))
 
 # Find and modify the line with geom_point
 lines <- gsub(
-  "geom_point\\(aes\\(x = Temp, y = Ozone\\), size = 3\\)", 
-  "geom_point(aes(x = Temp, y = Ozone))", 
+  "geom_point\\(aes\\(x = Temp, y = Ozone\\), size = 3\\)",
+  "geom_point(aes(x = Temp, y = Ozone))",
   lines
 )
 

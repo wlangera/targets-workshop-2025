@@ -1,9 +1,0 @@
-name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-file|stem|4752ceb2f667554d|7c49d2fcf69f95f5|0ce30da344f5ebd5|1735323524|C:/R/git_repositories/workshops/targets-workshop-2025/data/example_data.csv|t20207.3621564189s|s2890b|2890|file|local|vector|||0.19||
-data|stem|4c2f43a0b310f1fa|14c0abc3329ce191|87a9e290dafa7966|33550471||t20207.5330543716s|s1355b|1355|rds|local|vector|||0.11||
-model|stem|c1bd0254b0e5d923|122b7dd8ec340fb3|a1e2af39aa3a77b5|808688450||t20207.5330547535s|s111b|111|rds|local|vector|||0||
-plot|stem|350cb5de9db40a49|e9da12e55abf4572|7d0b71f377ca078a|874984291||t20207.5334061032s|s89494b|89494|rds|local|vector|||0||
-fit_model|function|3f3c9d2e5cf2eb2b
-get_data|function|5173fe1c70ec019f
-plot_model|function|f296c7fbc90c5466
-data_path|object|a7551ac57eefeded

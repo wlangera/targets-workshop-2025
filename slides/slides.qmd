@@ -35,6 +35,8 @@ editor_options:
   - Tracking changes
 - Advanced usage
   - Branching
+  - Project management
+  - Much more ...
 :::
 
 ::: {.column width="50%"}
@@ -387,6 +389,15 @@ tar_make(
 
 ...
 
+## Project management
+
+...
+
+## Much more ...
+
+**targets** manual:\
+<https://books.ropensci.org/targets/>
+
 # Beyond **targets**
 ## R Targetopia
 
@@ -396,7 +407,7 @@ tar_make(
 
 ...
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, results='hide'}
 # Remove targets store
 tar_destroy(
   script = here::here("source", "pipeline_example", "_targets.R"),

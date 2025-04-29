@@ -22,28 +22,44 @@ knitr:
 ## Workshop schedule
 
 - 10:00-10:30 Introductory presentation
-- 10:30-12:00 Exercises
-- 12:00-12:30 Extensions of {targets}
+- 10:30-11:00 Extensions of {targets}
+- 11:00-12:30 Exercises
+
 
 <https://books.ropensci.org/targets/>
 
-## Introduction
-
-### How to get started with {targets}
-
-...
-
----
-
-### Branching
+# Introduction
+## What is {targets}
 
 ...
 
-## Exercises
+## Getting started
 
 ...
 
-## Beyond {targets}
 
-- R Targetopia
-  - <https://wlandau.github.io/targetopia/>
+## Branching
+
+...
+
+# Beyond {targets}
+## R Targetopia
+
+- <https://wlandau.github.io/targetopia/>
+
+## {tarchetypes} package
+
+...
+
+# Exercises
+## Challenge 1
+
+...
+
+## Challenge 2
+
+...
+
+## Challenge 3
+
+...

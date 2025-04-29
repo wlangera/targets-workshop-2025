@@ -1,12 +1,12 @@
 # nolint start
 # Functions for example pipeline
 get_data <- function(file) {
-  read_csv(file, col_types = cols()) %>%
-    filter(!is.na(Ozone))
+  data_set <- read_csv(file, col_types = cols())
+  data_set[complete.cases(data_set), ]
 }
 
 fit_model <- function(data) {
-  lm(Ozone ~ Temp, data) %>%
+  lm(Ozone ~ Temp, data) |>
     coefficients()
 }
 

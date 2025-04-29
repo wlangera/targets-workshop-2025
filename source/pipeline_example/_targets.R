@@ -3,7 +3,7 @@ library(targets)
 suppressPackageStartupMessages(library(here))
 
 # Set target options:
-tar_option_set(packages = c("readr", "dplyr", "ggplot2"))
+tar_option_set(packages = c("readr", "ggplot2"))
 
 # Load custom functions and small input objects into the R session
 source(here("source", "R", "example_functions.R"))

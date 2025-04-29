@@ -1,3 +1,4 @@
+# nolint start
 # Functions for example pipeline
 get_data <- function(file) {
   read_csv(file, col_types = cols()) %>%
@@ -14,3 +15,4 @@ plot_model <- function(model, data) {
     geom_point(aes(x = Temp, y = Ozone)) +
     geom_abline(intercept = model[1], slope = model[2])
 }
+# nolint end

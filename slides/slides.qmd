@@ -11,48 +11,402 @@ author:
     corresponding: true
 lang: en
 format:
-  inbo-revealjs: default
+  inbo-revealjs:
+    menu:
+      useTextContentForMissingTitles: false
+      hideMissingTitles: true
 knitr:
   opts_chunk:
     echo: true
     message: false
     warning: false
+editor_options: 
+  chunk_output_type: console
 ---
 
-## Workshop schedule
+## Table of contents
 
-- 10:00-10:30 Introductory presentation
-- 10:30-11:00 Extensions of {targets}
-- 11:00-12:30 Exercises
+:::: {.columns}
 
+::: {.column width="50%"}
+- Introduction
+  - What is **targets**?
+  - Getting started
+  - Tracking changes
+- Advanced usage
+  - Branching
+:::
 
-<https://books.ropensci.org/targets/>
+::: {.column width="50%"}
+- Beyond **targets**
+  - R Targetopia
+  - **tarchetypes** package
+
+- Exercises
+  - Challenge 1
+  - Challenge 2
+  - Challenge 3
+
+:::
+
+::::
 
 # Introduction
-## What is {targets}?
+## What is **targets**?
 
 - **Pipeline tool** for statistics and data science in R
   - Coordinates complex, computationally intensive **R workflows**  
   - Skips steps that are already up-to-date, saving time and resources
 - Ensures results stay **trustworthy** and **reproducible**
 
+**targets** manual:\
+<https://books.ropensci.org/targets/>
+
 ## Getting started
 
-...
+1. **Write R functions** for your analysis and save them in the `R/` folder  
+2. Use `use_targets()` to scaffold your project and **create the `_targets.R` file**
+3. **Edit `_targets.R`** to define your pipeline (guided by helpful comments)  
+4. **Visualise the pipeline** with `tar_visnetwork()`  
+5. **Run the pipeline** with `tar_make()`  
+6. **Access results** using `tar_read()` and other utility functions  
 
+---
 
+### 1. Write R functions
+
+```r
+# Functions for example pipeline
+get_data <- function(file) {
+  read_csv(file, col_types = cols()) %>%
+    filter(!is.na(Ozone))
+}
+
+fit_model <- function(data) {
+  lm(Ozone ~ Temp, data) %>%
+    coefficients()
+}
+
+plot_model <- function(model, data) {
+  ggplot(data) +
+    geom_point(aes(x = Temp, y = Ozone)) +
+    geom_abline(intercept = model[1], slope = model[2])
+}
+```
+
+---
+
+- `airquality` example dataset
+
+```{r, echo=FALSE}
+dir.create(here::here("data"), showWarnings = FALSE)
+```
+
+```{r}
+readr::write_csv(
+  airquality,
+  here::here("data", "example_data.csv")
+)
+```
+
+---
+
+### 2. Create `_targets.R` pipeline file
+
+- Load **targets** package.
+
+```{r}
+library(targets)
+```
+
+- `use_targets()`
+
+```r
+use_targets(
+  script = here::here("source", "pipeline_example", "_targets.R")
+)
+```
+
+---
+
+- `_targets.R` pipeline file
+
+```r
+# Created by use_targets().
+# Follow the comments below to fill in this target script.
+# Then follow the manual to check and run the pipeline:
+#   https://books.ropensci.org/targets/walkthrough.html#inspect-the-pipeline
+
+# Load packages required to define the pipeline:
+library(targets)
+# library(tarchetypes) # Load other packages as needed.
+
+# Set target options:
+tar_option_set(
+  packages = c("tibble") # Packages that your targets need for their tasks.
+  # format = "qs", # Optionally set the default storage format. qs is fast.
+  #
+  # Pipelines that take a long time to run may benefit from
+  # optional distributed computing. To use this capability
+  # in tar_make(), supply a {crew} controller
+  # as discussed at https://books.ropensci.org/targets/crew.html.
+  # Choose a controller that suits your needs. For example, the following
+  # sets a controller that scales up to a maximum of two workers
+  # which run as local R processes. Each worker launches when there is work
+  # to do and exits if 60 seconds pass with no tasks to run.
+  #
+  #   controller = crew::crew_controller_local(workers = 2, seconds_idle = 60)
+  #
+  # Alternatively, if you want workers to run on a high-performance computing
+  # cluster, select a controller from the {crew.cluster} package.
+  # For the cloud, see plugin packages like {crew.aws.batch}.
+  # The following example is a controller for Sun Grid Engine (SGE).
+  # 
+  #   controller = crew.cluster::crew_controller_sge(
+  #     # Number of workers that the pipeline can scale up to:
+  #     workers = 10,
+  #     # It is recommended to set an idle time so workers can shut themselves
+  #     # down if they are not running tasks.
+  #     seconds_idle = 120,
+  #     # Many clusters install R as an environment module, and you can load it
+  #     # with the script_lines argument. To select a specific verison of R,
+  #     # you may need to include a version string, e.g. "module load R/4.3.2".
+  #     # Check with your system administrator if you are unsure.
+  #     script_lines = "module load R"
+  #   )
+  #
+  # Set other options as needed.
+)
+
+# Run the R scripts in the R/ folder with your custom functions:
+tar_source()
+# tar_source("other_functions.R") # Source other scripts as needed.
+
+# Replace the target list below with your own:
+list(
+  tar_target(
+    name = data,
+    command = tibble(x = rnorm(100), y = rnorm(100))
+    # format = "qs" # Efficient storage for general data objects.
+  ),
+  tar_target(
+    name = model,
+    command = coefficients(lm(y ~ x, data = data))
+  )
+)
+```
+
+---
+
+### 3. Edit `_targets.R` pipeline file
+
+- Lets clean up this file to the basics
+
+```r
+# Load packages required to define the pipeline:
+library(targets)
+library(here)
+
+# Set target options:
+tar_option_set(packages = c("readr", "dplyr", "ggplot2"))
+
+# Load custom functions and small input objects into the R session
+source(here("source", "R", "example_functions.R"))
+data_path <- here("data")
+
+# Write the pipeline, a list of target objects
+list(
+  tar_target(file, file.path(data_path, "example_data.csv"), format = "file"),
+  tar_target(data, get_data(file)),
+  tar_target(model, fit_model(data)),
+  tar_target(plot, plot_model(model, data))
+)
+```
+
+---
+
+### 4. Visualise the pipeline
+
+- `tar_visnetwork()`
+
+```{r}
+tar_visnetwork(
+  script = here::here("source", "pipeline_example", "_targets.R"),
+  store = here::here("source", "pipeline_example", "_targets")
+)
+```
+
+---
+
+### 5. Run the pipeline
+
+- `tar_make()`
+
+```{r, message=FALSE}
+tar_make(
+  script = here::here("source", "pipeline_example", "_targets.R"),
+  store = here::here("source", "pipeline_example", "_targets")
+)
+```
+
+---
+
+```{r}
+tar_visnetwork(
+  script = here::here("source", "pipeline_example", "_targets.R"),
+  store = here::here("source", "pipeline_example", "_targets")
+)
+```
+
+---
+
+### 6. Access results
+
+- `tar_read()`
+
+```{r}
+model_coefs <- tar_read(
+  "model",
+  store = here::here("source", "pipeline_example", "_targets")
+)
+
+model_coefs
+```
+
+---
+
+```{r}
+tar_read(
+  "plot",
+  store = here::here("source", "pipeline_example", "_targets")
+)
+```
+
+---
+
+## Tracking changes
+
+- The **targets** package notices when you make changes to code and data
+  - Change code
+    - E.g. increase point size in plot function
+
+```r
+plot_model <- function(model, data) {
+  ggplot(data) +
+    geom_point(aes(x = Temp, y = Ozone), size = 3) + # Add size 3
+    geom_abline(intercept = model[1], slope = model[2])
+}
+```
+
+---
+
+```{r, echo=FALSE}
+# Read the file
+lines <- readLines(here::here("source", "R", "example_functions.R"))
+
+# Find and modify the line with geom_point
+lines <- gsub(
+  "geom_point\\(aes\\(x = Temp, y = Ozone\\)\\)", 
+  "geom_point(aes(x = Temp, y = Ozone), size = 3)", 
+  lines
+)
+
+# Write the updated file
+writeLines(lines, here::here("source", "R", "example_functions.R"))
+```
+
+```{r}
+tar_visnetwork(
+  script = here::here("source", "pipeline_example", "_targets.R"),
+  store = here::here("source", "pipeline_example", "_targets")
+)
+```
+
+```{r, echo=FALSE}
+# Read the file
+lines <- readLines(here::here("source", "R", "example_functions.R"))
+
+# Find and modify the line with geom_point
+lines <- gsub(
+  "geom_point\\(aes\\(x = Temp, y = Ozone\\), size = 3\\)", 
+  "geom_point(aes(x = Temp, y = Ozone))", 
+  lines
+)
+
+# Write the updated file
+writeLines(lines, here::here("source", "R", "example_functions.R"))
+```
+
+```{r, echo=FALSE, results='hide'}
+tar_make(
+  script = here::here("source", "pipeline_example", "_targets.R"),
+  store = here::here("source", "pipeline_example", "_targets")
+)
+```
+
+## Tracking changes
+
+- The **targets** package notices when you make changes to code and data
+  - Change code
+  - Change data
+    - `format = "file"` in `tar_target()`
+    - E.g. select first 100 rows of `airquality` dataset
+  
+```{r}
+readr::write_csv(
+  head(airquality, n = 100),
+  here::here("data", "example_data.csv")
+)
+```
+
+---
+
+```{r}
+tar_visnetwork(
+  script = here::here("source", "pipeline_example", "_targets.R"),
+  store = here::here("source", "pipeline_example", "_targets")
+)
+```
+
+```{r, echo=FALSE}
+readr::write_csv(
+  airquality,
+  here::here("data", "example_data.csv")
+)
+```
+
+```{r, echo=FALSE, results='hide'}
+tar_make(
+  script = here::here("source", "pipeline_example", "_targets.R"),
+  store = here::here("source", "pipeline_example", "_targets")
+)
+```
+
+# Advanced usage
 ## Branching
 
 ...
 
-# Beyond {targets}
+# Beyond **targets**
 ## R Targetopia
 
 - <https://wlandau.github.io/targetopia/>
 
-## {tarchetypes} package
+## **tarchetypes** package
 
 ...
+
+```{r, echo=FALSE}
+# Remove targets store
+tar_destroy(
+  script = here::here("source", "pipeline_example", "_targets.R"),
+  store = here::here("source", "pipeline_example", "_targets"),
+  ask = FALSE
+)
+
+# Remove example data
+file.remove(here::here("data", "example_data.csv"))
+```
 
 # Exercises
 ## Challenge 1

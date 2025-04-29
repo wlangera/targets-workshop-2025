@@ -44,6 +44,7 @@
 /cache/
 docs
 docs/
+data
 libs
 output
 po/*~

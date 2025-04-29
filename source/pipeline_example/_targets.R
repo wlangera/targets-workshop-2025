@@ -1,15 +1,15 @@
-# Load the packages needed to define the pipeline
+# Load packages required to define the pipeline:
 library(targets)
-library(here)
+suppressPackageStartupMessages(library(here))
 
-# Declare packages that the targets themselves need, as well as other settings
+# Set target options:
 tar_option_set(packages = c("readr", "dplyr", "ggplot2"))
 
 # Load custom functions and small input objects into the R session
 source(here("source", "R", "example_functions.R"))
 data_path <- here("data")
 
-# Write the pipeline: a list of target objects
+# Write the pipeline, a list of target objects
 list(
   tar_target(file, file.path(data_path, "example_data.csv"), format = "file"),
   tar_target(data, get_data(file)),

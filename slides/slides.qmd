@@ -387,7 +387,78 @@ tar_make(
 # Advanced usage
 ## Branching
 
-...
+- A single target create multiple sub-targets (**branches**)
+  - Parallel execution of branches
+  - Efficient re-use: only updated branches re-run
+  - Scales elegantly with large or complex inputs
+- Static vs Dynamic Branching
+  - **Dynamic**: Target creates sub-targets at runtime based on upstream results.
+  - **Static**: Target depends on a fixed list — created ahead of time.
+
+---
+
+### Dynamic branching
+
+- **targets** offers multiple **branching patterns**
+
+**1.** `map()` – One branch per tuple of elements:
+
+- Useful for one-to-one processing.
+
+```r
+tar_target(files, list("a.csv", "b.csv", "c.csv"))
+tar_target(data, read_csv(files), pattern = map(files))
+```
+
+➡ Creates one branch per file.
+
+---
+
+**2.** `cross()` – All combinations of elements:
+
+- Creates a branch for every combination of upstream inputs.
+
+```r
+tar_target(a, c(1, 2))
+tar_target(b, c("x", "y"))
+tar_target(result, paste(a, b), pattern = cross(a, b))
+```
+
+➡ Creates: `result_1_1`, `result_1_2`, `result_2_1`, `result_2_2`.
+
+---
+
+**3.** `slice()` – Specific slices/branches only:
+
+- Selects certain branches from an upstream branched target.
+
+```r
+tar_target(data, 1:5)
+tar_target(square, data^2, pattern = map(data))
+tar_target(selected, square, pattern = slice(square, index = c(2, 4)))
+```
+
+➡ Only runs branches 2 and 4 of `square`.
+
+---
+
+**4.** `head()`/`tail()`/`sample()` – Selection of elements:
+
+- `head()` processes only the first $N$ elements.
+
+```r
+tar_target(data, 1:10)
+tar_target(head_values, data, pattern = head(data, n = 3))
+```
+
+➡ Branches over values 1, 2, 3.
+
+
+- `tail()` processes the last $N$ elements and `sample()` over a random sample of $N$ elements.
+
+---
+
+### Static branching
 
 ## Project management
 

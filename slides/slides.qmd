@@ -37,18 +37,16 @@ editor_options:
   - Branching
   - Project management
   - Much more ...
+
 :::
 
 ::: {.column width="50%"}
-- Beyond **targets**
-  - R Targetopia
-  - **tarchetypes** package
-
 - Exercises
   - Challenge 1
   - Challenge 2
+  - INTERMEZZO - Beyond **targets**
   - Challenge 3 - BONUS
-
+  
 :::
 
 ::::
@@ -502,27 +500,6 @@ tar_read(target_123)
 **targets** manual:\
 <https://books.ropensci.org/targets/>
 
-# Beyond **targets**
-## R Targetopia
-
-- <https://wlandau.github.io/targetopia/>
-
-## **tarchetypes** package
-
-- A companion package with **prebuilt target and pipeline archetypes**.
-- Simplifies complex workflows into **concise, readable syntax**.
-- Enhances **reproducibility** by standardizing common patterns.
-
----
-
-- Some examples
-  - `tarchetypes::tar_file()`
-    - Shorthand for `format = "file"` in `targets::tar_target()`
-  - `tarchetypes::tar_group_by()`
-    - Combines `dplyr::group_by()` and `targets::tar_group()`
-  - `tarchetypes::tar_render()`
-    - Render R Markdown reports in the pipeline
-
 ```{r, echo=FALSE, results='hide'}
 # Remove targets store
 tar_destroy(
@@ -563,6 +540,29 @@ Hints:
     - Top 20 species that occur in most grid cells
   - Use dynamic branching to create presence-absence plots for each species separately
 - Add the plots in your external R Markdown report
+
+## INTERMEZZO - Beyond **targets**
+### R Targetopia
+
+- <https://wlandau.github.io/targetopia/>
+
+---
+
+### **tarchetypes** package
+
+- A companion package with **prebuilt target and pipeline archetypes**.
+- Simplifies complex workflows into **concise, readable syntax**.
+- Enhances **reproducibility** by standardizing common patterns.
+
+---
+
+- Some examples
+  - `tarchetypes::tar_file()`
+    - Shorthand for `format = "file"` in `targets::tar_target()`
+  - `tarchetypes::tar_group_by()`
+    - Combines `dplyr::group_by()` and `targets::tar_group()`
+  - `tarchetypes::tar_render()`
+    - Render R Markdown reports in the pipeline
 
 ## Challenge 3 - BONUS
 

@@ -460,6 +460,12 @@ tar_target(head_values, data, pattern = head(data, n = 3))
 
 ### Static branching
 
+- Define group of targets **before** the pipeline runs.
+  - Generate targets up front (not during execution).
+  - Does **not** depend on runtime data.
+- Best suited for a **small number of heterogeneous** targets.
+  - E.g. iterating over different datasets and analysis methods
+
 ## Project management
 
 ...

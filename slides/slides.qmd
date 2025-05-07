@@ -47,7 +47,7 @@ editor_options:
 - Exercises
   - Challenge 1
   - Challenge 2
-  - Challenge 3
+  - Challenge 3 - BONUS
 
 :::
 
@@ -392,8 +392,8 @@ tar_make(
   - Efficient re-use: only updated branches re-run
   - Scales elegantly with large or complex inputs
 - Static vs Dynamic Branching
-  - **Dynamic**: Target creates sub-targets at runtime based on upstream results.
-  - **Static**: Target depends on a fixed list — created ahead of time.
+  - **Dynamic**: Target creates sub-targets at runtime based on upstream results
+  - **Static**: Target depends on a fixed list — created ahead of time
 
 ---
 
@@ -403,20 +403,20 @@ tar_make(
 
 **1.** `map()` – One branch per tuple of elements:
 
-- Useful for one-to-one processing.
+- Useful for one-to-one processing
 
 ```r
 tar_target(files, list("a.csv", "b.csv", "c.csv"))
 tar_target(data, read_csv(files), pattern = map(files))
 ```
 
-➡ Creates one branch per file.
+➡ Creates one branch per file
 
 ---
 
 **2.** `cross()` – All combinations of elements:
 
-- Creates a branch for every combination of upstream inputs.
+- Creates a branch for every combination of upstream inputs
 
 ```r
 tar_target(a, c(1, 2))
@@ -424,7 +424,7 @@ tar_target(b, c("x", "y"))
 tar_target(result, paste(a, b), pattern = cross(a, b))
 ```
 
-➡ Creates: `result_1_1`, `result_1_2`, `result_2_1`, `result_2_2`.
+➡ Creates: `result_1_1`, `result_1_2`, `result_2_1`, `result_2_2`
 
 ---
 
@@ -438,37 +438,64 @@ tar_target(square, data^2, pattern = map(data))
 tar_target(selected, square, pattern = slice(square, index = c(2, 4)))
 ```
 
-➡ Only runs branches 2 and 4 of `square`.
+➡ Only runs branches 2 and 4 of `square`
 
 ---
 
 **4.** `head()`/`tail()`/`sample()` – Selection of elements:
 
-- `head()` processes only the first $N$ elements.
+- `head()` processes only the first $N$ elements
 
 ```r
 tar_target(data, 1:10)
 tar_target(head_values, data, pattern = head(data, n = 3))
 ```
 
-➡ Branches over values 1, 2, 3.
+➡ Branches over values 1, 2, 3
 
 
-- `tail()` processes the last $N$ elements and `sample()` over a random sample of $N$ elements.
+- `tail()` processes the last $N$ elements and `sample()` over a random sample of $N$ elements
 
 ---
 
 ### Static branching
 
-- Define group of targets **before** the pipeline runs.
-  - Generate targets up front (not during execution).
-  - Does **not** depend on runtime data.
-- Best suited for a **small number of heterogeneous** targets.
+- Define group of targets **before** the pipeline runs
+  - Generate targets up front (not during execution)
+  - Does **not** depend on runtime data
+- Best suited for a **small number of heterogeneous** targets
   - E.g. iterating over different datasets and analysis methods
 
 ## Project management
 
-...
+1. Use nested R projects
+   - pro: clean, relative paths
+   - con: need to know when to open which `.Rproj`
+2. Use **here** package
+   - pro: no need for separate `.Rproj` files or configuration scripts
+   - con: paths needed every time to run/handle each pipeline
+
+---
+
+3. Use `tar_config_set()`
+   - pro: no need for separate `.Rproj` files or file paths
+   - con: separate config. script and use `Sys.setenv()` each time
+
+```r
+tar_config_set(script = "script_a.R", store = "store_a", project = "project_a")
+tar_config_set(script = "script_b.R", store = "store_b", project = "project_b")
+```
+
+- Set environment variables and run/read pipeline
+
+```r
+Sys.setenv(TAR_PROJECT = "project_a")
+tar_make()
+tar_read(target_abc)
+Sys.setenv(TAR_PROJECT = "project_b")
+tar_make()
+tar_read(target_123)
+```
 
 ## Much more ...
 
@@ -482,7 +509,19 @@ tar_target(head_values, data, pattern = head(data, n = 3))
 
 ## **tarchetypes** package
 
-...
+- A companion package with **prebuilt target and pipeline archetypes**.
+- Simplifies complex workflows into **concise, readable syntax**.
+- Enhances **reproducibility** by standardizing common patterns.
+
+---
+
+- Some examples
+  - `tarchetypes::tar_file()`
+    - Shorthand for `format = "file"` in `targets::tar_target()`
+  - `tarchetypes::tar_group_by()`
+    - Combines `dplyr::group_by()` and `targets::tar_group()`
+  - `tarchetypes::tar_render()`
+    - Render R Markdown reports in the pipeline
 
 ```{r, echo=FALSE, results='hide'}
 # Remove targets store
@@ -499,12 +538,34 @@ file.remove(here::here("data", "example_data.csv"))
 # Exercises
 ## Challenge 1
 
-...
+- Create a **targets** pipeline
+  1. Read example datasets from the **b3data** data package ([link](https://github.com/b-cubed-eu/b3data-scripts))
+     - `bird_cube_belgium_mgrs10` (tabular) and `mgrs10_refgrid_belgium` (polygon grid)
+  2. Filter out data with minimal coord. uncertainty > 10 km
+  3. Join the dataframe and grid resources together
+  4. Visualise the number of bird species per grid cell
+- Create an R Markdown report (outside pipeline) that visualises the plot
+
+---
+
+Hints:
+
+- Use **frictionless** and **sf** to read the data, see [this README](https://github.com/b-cubed-eu/b3data-scripts) on how to get the data
+- Use **dplyr** for data wrangling and joining of datasets
+- Use **sf** to restore the CRS after joining
+- Use **ggplot2** together with **sf** for visualisation
 
 ## Challenge 2
 
-...
+- Built further on your pipeline from *Challenge 1*
+  - Filter the data
+    - 2020
+    - Top 20 species that occur in most grid cells
+  - Use dynamic branching to create presence-absence plots for each species separately
+- Add the plots in your external R Markdown report
 
-## Challenge 3
+## Challenge 3 - BONUS
 
-...
+- Use **tarchetypes** package for *Challenge 2*
+  - To group the species in dynamic branching
+  - To create the R Markdown report at the end of of the pipeline

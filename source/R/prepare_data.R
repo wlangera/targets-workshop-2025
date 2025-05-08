@@ -6,4 +6,15 @@ filter_coord_uncertainty <- function(data_cube, max_uncertainty) {
     dplyr::filter(mincoordinateuncertaintyinmeters <= max_uncertainty)
 }
 
-# Join datasets
+# Count number of species
+calculate_richness <- function(data_cube) {
+  require(dplyr)
+  species <- mgrscode <- NULL
+
+  data_cube  |>
+    # Count number of species
+    dplyr::summarise(
+      n_species = dplyr::n_distinct(species),
+      .by = mgrscode
+    )
+}

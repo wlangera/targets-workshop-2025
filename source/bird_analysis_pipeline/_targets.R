@@ -38,5 +38,18 @@ list(
       data_cube = bird_cube_belgium,
       max_uncertainty = 100000
     )
+  ),
+  tar_target(
+    bird_richness_df,
+    calculate_richness(
+      data_cube = filtered_bird_cube
+    )
+  ),
+  tar_target(
+    spatial_bird_richness,
+    plot_richness(
+      data_cube = bird_richness_df,
+      ref_grid = mgrs10_refgrid[[1]]
+    )
   )
 )

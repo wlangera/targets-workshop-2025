@@ -1,7 +1,11 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 bird_cube_belgium|stem|83f14fa1c03c8d98|7683030347082e17|3d70cb36debd8370|-1995285404||t20216.6572478698s|s2582808b|2582808|rds|local|vector|||1.91||
 filtered_bird_cube|stem|491a3813eed08258|fec17c69c3f40276|68af547ebfa0ef5f|206235028||t20216.6638166329s|s2582789b|2582789|rds|local|vector|||0.12||
+mgrs10_refgrid|stem|27f3e2c41d3126a6|8086ec6ee4744ca7|3fe534f12164eab6|1901350706||t20216.6648956991s|s121950b|121950|rds|local|vector|||1.25||
+bird_richness_df|stem|96d91c2b1d85b8d0|774e11ce1287088e|49a0c8f024eef8cd|-414597672||t20216.6905245134s|s1904b|1904|rds|local|vector|||0.14||
+spatial_bird_richness|stem|1ea41aa4b61f078c|d3fa340fee37de5b|5f57aff6f6f077c4|1511300646||t20216.6905254326s|s136600b|136600|rds|local|vector|||0.02||
 filter_coord_uncertainty|function|1c77a2c9aba53191
+calculate_richness|function|5969265839b60f79
+join_data_with_grid|function|91fb3cbb141d71a1
 download_gpkg_data|function|97f6840495e38bcc
 download_tabular_data|function|9d9aaf19ea17cf3e
-mgrs10_refgrid|stem|27f3e2c41d3126a6|8086ec6ee4744ca7|3fe534f12164eab6|1901350706||t20216.6648956991s|s121950b|121950|rds|local|vector|||1.25||

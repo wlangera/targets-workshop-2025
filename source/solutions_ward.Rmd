@@ -47,3 +47,7 @@ tar_make(
 )
 ```
 
+```{r}
+tar_read(spatial_bird_richness, store = store)
+```
+

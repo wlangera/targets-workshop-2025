@@ -25,20 +25,25 @@ library(here)
 # Challenge 1
 ## Create targets pipeline
 
+```{r}
+script <- here::here("source", "bird_analysis_pipeline", "_targets.R")
+store <- here::here("source", "bird_analysis_pipeline", "_targets")
+```
+
 To set up the targets pipeline, the following code was used:
 
-```r
+```
 use_targets(
-  script = here::here("source", "bird_analysis_pipeline", "_targets.R")
+  script = script
 )
 ```
 
 You can run the pipeline with this code:
 
-```{r}
+```
 tar_make(
-  script = here::here("source", "bird_analysis_pipeline", "_targets.R"),
-  store = here::here("source", "bird_analysis_pipeline", "_targets")
+  script = script,
+  store = store
 )
 ```
 

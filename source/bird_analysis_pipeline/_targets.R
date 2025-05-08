@@ -5,6 +5,7 @@
 
 # Load packages required to define the pipeline:
 library(targets)
+library(here)
 
 # Set target options:
 tar_option_set(
@@ -12,12 +13,30 @@ tar_option_set(
 )
 
 # Load custom functions and small input objects into the R session:
-
+source(here("source", "R", "download_data.R"))
+source(here("source", "R", "prepare_data.R"))
 
 # Write the pipeline, a list of target objects:
 list(
-  tar_target(file, file.path(data_path, "example_data.csv"), format = "file"),
-  tar_target(data, get_data(file)),
-  tar_target(model, fit_model(data)),
-  tar_target(plot, plot_model(model, data))
+  tar_target(
+    bird_cube_belgium,
+    download_tabular_data(
+      record = 15211029,
+      resource = "bird_cube_belgium_mgrs10"
+    )
+  ),
+  tar_target(
+    mgrs10_refgrid,
+    download_gpkg_data(
+      record = 15211029,
+      resource = "mgrs10_refgrid_belgium"
+    )
+  ),
+  tar_target(
+    filtered_bird_cube,
+    filter_coord_uncertainty(
+      data_cube = bird_cube_belgium,
+      max_uncertainty = 100000
+    )
+  )
 )

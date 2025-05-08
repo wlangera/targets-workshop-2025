@@ -24,3 +24,15 @@ How to do this is explained in the README of [this repo](https://github.com/b-cu
 **2.** {targets} R package documentation ([link](https://docs.ropensci.org/targets/)).
 
 **3.** {tarchetypes} R package documentation ([link](https://docs.ropensci.org/tarchetypes/)).
+
+## Coding style and spelling
+
+Within this repository, you can check coding style and spelling using the [checklist](https://github.com/inbo/checklist) package:
+
+```r
+# Check coding style
+checklist::check_lintr()
+
+# Check spelling
+checklist::check_spelling()
+```

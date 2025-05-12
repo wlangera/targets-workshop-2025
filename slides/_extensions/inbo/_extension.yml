@@ -24,9 +24,7 @@ contributes:
         - title-slide.html
       format-resources:
         - inbo-nl-kleur.png
-        - inbo-nl-wit.png
-        - vlaanderen-nl-naakt.png
-        - vlaanderen-nl-transparant.png
-        - vlaanderen-nl-vol.png
+        - b3-logo.png
+        - eu-funded-en.png
       filters:
         - reveal.lua

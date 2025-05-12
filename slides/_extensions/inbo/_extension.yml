@@ -24,7 +24,6 @@ contributes:
         - title-slide.html
       format-resources:
         - inbo-nl-kleur.png
-        - inbo-nl-wit.png
         - b3-logo.png
         - eu-funded-en.png
       filters:

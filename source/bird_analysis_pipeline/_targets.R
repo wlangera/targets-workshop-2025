@@ -15,6 +15,7 @@ tar_option_set(
 # Load custom functions and small input objects into the R session:
 source(here("source", "R", "download_data.R"))
 source(here("source", "R", "prepare_data.R"))
+source(here("source", "R", "plot_richness.R"))
 
 # Write the pipeline, a list of target objects:
 list(
@@ -48,7 +49,7 @@ list(
   tar_target(
     spatial_bird_richness,
     plot_richness(
-      data_cube = bird_richness_df,
+      richness_cube = bird_richness_df,
       ref_grid = mgrs10_refgrid[[1]]
     )
   )

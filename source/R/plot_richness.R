@@ -3,7 +3,7 @@ plot_richness <- function(richness_cube, ref_grid) {
   n_species <- NULL
 
   # Join richness and reference grid
-  joined_sf <- dplyr::left_join(richness_cube, ref_grid, by = "mgrscode") |>
+  joined_sf <- dplyr::full_join(richness_cube, ref_grid, by = "mgrscode") |>
     sf::st_sf(sf_column_name = "geom", crs = sf::st_crs(ref_grid))
 
   # Visualise result

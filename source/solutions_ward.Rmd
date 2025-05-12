@@ -19,7 +19,6 @@ opts_knit$set(root.dir = here::here())
 ```{r}
 # packages
 library(targets)
-library(here)
 ```
 
 # Challenge 1
@@ -62,13 +61,13 @@ tar_visnetwork(
 tar_read(spatial_bird_richness, store = store)
 ```
 
-## Challenge 2
+# Challenge 2
 
 ```{r}
 tar_read(top_species_presence, store = store)
 ```
 
-## Challenge 3
+# Challenge 3
 
 Replace this target from the previous challenge
 
@@ -91,5 +90,14 @@ tarchetypes::tar_group_by(
   bird_cube_2020 |>
     dplyr::filter(species %in% top_species),
   species
+)
+```
+
+Create R Markdown report you want to render and add `tar_render()` to the pipeline
+
+```r
+tar_render(
+  solutions,
+  here("source", "pipeline_report_ward.Rmd")
 )
 ```

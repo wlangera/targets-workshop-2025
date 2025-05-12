@@ -84,5 +84,9 @@ list(
     ),
     pattern = map(top_species_data),
     iteration = "list"
+  ),
+  tar_render(
+    solutions,
+    here("source", "pipeline_report_ward.Rmd")
   )
 )

@@ -2,6 +2,9 @@
 
 Workshop of {[targets](https://books.ropensci.org/targets/)} R package INBO 2025.
 
+The slides are provided in `slides/slides.qmd`.
+They can be rendered using different tools as explained [here](https://quarto.org/docs/get-started/hello/rstudio.html#rendering).
+
 ## Which packages to install for completing the exercises.
 
 To work on the exercises, install the following packages.

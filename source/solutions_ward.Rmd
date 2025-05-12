@@ -40,14 +40,24 @@ use_targets(
 
 You can run the pipeline with this code:
 
-```
+```{r}
 tar_make(
   script = script,
   store = store
 )
 ```
 
+We visualise the pipeline.
+
+```{r}
+tar_visnetwork(
+  script = script,
+  store = store
+)
+```
+
+## Visualise species richness
+
 ```{r}
 tar_read(spatial_bird_richness, store = store)
 ```
-

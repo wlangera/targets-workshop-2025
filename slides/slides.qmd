@@ -261,6 +261,17 @@ tar_visnetwork(
 
 ---
 
+- The pipeline is up to date, rerunning the pipeline is very fast
+
+```{r}
+tar_make(
+  script = here::here("source", "pipeline_example", "_targets.R"),
+  store = here::here("source", "pipeline_example", "_targets")
+)
+```
+
+---
+
 ### 6. Access results
 
 - `tar_read()`

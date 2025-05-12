@@ -1,6 +1,6 @@
 # Filter data cube on coordinate uncertainty
 filter_coord_uncertainty <- function(data_cube, max_uncertainty) {
-  mincoordinateuncertaintyinmeters <- NULL
+  mincoordinateuncertaintyinmeters <- NULL #nolint: object_length_linter
 
   data_cube |>
     dplyr::filter(mincoordinateuncertaintyinmeters <= max_uncertainty)

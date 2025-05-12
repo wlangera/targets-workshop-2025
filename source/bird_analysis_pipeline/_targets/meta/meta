@@ -4,7 +4,6 @@ filtered_bird_cube|stem|491a3813eed08258|fec17c69c3f40276|68af547ebfa0ef5f|20623
 bird_richness_df|stem|96d91c2b1d85b8d0|774e11ce1287088e|49a0c8f024eef8cd|-414597672||t20216.6905245134s|s1904b|1904|rds|local|vector|||0.14||
 join_data_with_grid|function|91fb3cbb141d71a1|||||||||||||||
 mgrs10_refgrid|stem|27f3e2c41d3126a6|8086ec6ee4744ca7|3fe534f12164eab6|1901350706||t20220.3376289597s|s121950b|121950|rds|local|vector|||1.52||
-spatial_bird_richness|stem|c7cfc9d090e88bda|8f8bce801303cf8b|fe7a59e7ad01fe00|1511300646||t20220.3618477153s|s919470b|919470|rds|local|vector|||0.03||
 bird_cube_2020|stem|020de15edf370ca0|a1ab3ced278cb44f|c633a56de9b8f5cd|1432613186||t20220.3623039257s|s113993b|113993|rds|local|vector|||0.03||
 top_species|stem|344bfb215300570b|969946a21d964a58|ea18d47ae86ae015|2066125323||t20220.3687981589s|s305b|305|rds|local|vector|||0.04||
 top_species_data|stem|a9fdd7f85e5067c6|0e6765481dd95fb9|b4cc2f52409061ad|883800745||t20220.3933939507s|s21013b|21013|rds|local|group|||0.01||
@@ -34,6 +33,7 @@ calculate_richness|function|5969265839b60f79
 plot_presence|function|32f73ea224a79226
 get_top_species|function|4db71c450cc1a5ce
 download_gpkg_data|function|97f6840495e38bcc
-plot_richness|function|c1a171caf5753c34
+plot_richness|function|724a97db12bd2f55
 filter_year|function|e531962e546d99b1
 download_tabular_data|function|9d9aaf19ea17cf3e
+spatial_bird_richness|stem|e94518f1c46d69d4|8f8bce801303cf8b|d4a5ba32a760f2de|1511300646||t20220.4065270897s|s927879b|927879|rds|local|vector|||0.02||

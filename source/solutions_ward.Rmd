@@ -63,6 +63,8 @@ tar_read(spatial_bird_richness, store = store)
 
 # Challenge 2
 
+We create functions to get the most common species and visualise their presence in 2020.
+
 ```{r}
 tar_read(top_species_presence, store = store)
 ```

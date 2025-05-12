@@ -52,5 +52,12 @@ list(
       richness_cube = bird_richness_df,
       ref_grid = mgrs10_refgrid[[1]]
     )
+  ),
+  tar_target(
+    bird_cube_2020,
+    filter_year(
+      data_cube = filtered_bird_cube,
+      time_point = 2020
+    )
   )
 )

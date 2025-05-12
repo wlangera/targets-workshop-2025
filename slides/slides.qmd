@@ -46,6 +46,7 @@ editor_options:
   - Challenge 2
   - INTERMEZZO - Beyond **targets**
   - Challenge 3 - BONUS
+  - Solutions
   
 :::
 
@@ -579,3 +580,26 @@ plot_richness(
 - Use **tarchetypes** package for *Challenge 2*
   - To group the species in dynamic branching
   - To create the R Markdown report at the end of of the pipeline
+
+## Solutions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Provided in separate branches
+  - `challenge-1-solution`
+  - `challenge-2-solution`
+  - `challenge-3-solution`
+  - merged with `main` after the workshop
+
+:::
+
+::: {.column width="50%"}
+- R Markdown with solutions
+  - `source/solutions_ward.Rmd`
+    - runs pipeline `bird_analysis_pipeline`
+    - shows output figures
+  
+:::
+
+::::

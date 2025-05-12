@@ -46,6 +46,7 @@ editor_options:
   - Challenge 2
   - INTERMEZZO - Beyond **targets**
   - Challenge 3 - BONUS
+  - Solutions
   
 :::
 

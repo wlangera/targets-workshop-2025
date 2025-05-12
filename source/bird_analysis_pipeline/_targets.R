@@ -17,6 +17,7 @@ source(here("source", "R", "download_data.R"))
 source(here("source", "R", "prepare_data.R"))
 source(here("source", "R", "plot_richness.R"))
 source(here("source", "R", "get_top_species.R"))
+source(here("source", "R", "plot_presence.R"))
 
 # Write the pipeline, a list of target objects:
 list(
@@ -67,5 +68,22 @@ list(
       data_cube = bird_cube_2020,
       top_n = 20
     )
+  ),
+  tar_target(
+    top_species_data,
+    bird_cube_2020 |>
+      dplyr::filter(species %in% top_species) |>
+      dplyr::group_by(species) |>
+      tar_group(),
+    iteration = "group"
+  ),
+  tar_target(
+    top_species_presence,
+    plot_presence(
+      data_cube = top_species_data,
+      ref_grid = mgrs10_refgrid[[1]]
+    ),
+    pattern = map(top_species_data),
+    iteration = "list"
   )
 )

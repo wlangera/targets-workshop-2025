@@ -38,7 +38,7 @@ use_targets(
 )
 ```
 
-You can run the pipeline with this code:
+We run the pipeline:
 
 ```{r}
 tar_make(
@@ -47,7 +47,7 @@ tar_make(
 )
 ```
 
-We visualise the pipeline.
+We visualise the pipeline:
 
 ```{r}
 tar_visnetwork(

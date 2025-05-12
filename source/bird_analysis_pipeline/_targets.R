@@ -16,6 +16,7 @@ tar_option_set(
 source(here("source", "R", "download_data.R"))
 source(here("source", "R", "prepare_data.R"))
 source(here("source", "R", "plot_richness.R"))
+source(here("source", "R", "get_top_species.R"))
 
 # Write the pipeline, a list of target objects:
 list(
@@ -58,6 +59,13 @@ list(
     filter_year(
       data_cube = filtered_bird_cube,
       time_point = 2020
+    )
+  ),
+  tar_target(
+    top_species,
+    get_top_species(
+      data_cube = bird_cube_2020,
+      top_n = 20
     )
   )
 )

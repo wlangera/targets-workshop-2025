@@ -22,7 +22,7 @@ calculate_richness <- function(data_cube) {
 # Filter data cube on year
 filter_year <- function(data_cube, time_point) {
   year <- NULL
-  
+
   data_cube |>
     dplyr::filter(year == time_point)
 }

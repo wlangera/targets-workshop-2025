@@ -62,7 +62,7 @@ tar_visnetwork(
 tar_read(spatial_bird_richness, store = store)
 ```
 
-## Challenge 2
+# Challenge 2
 
 ```{r}
 tar_read(top_species_presence, store = store)

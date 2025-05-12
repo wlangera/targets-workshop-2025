@@ -519,18 +519,28 @@ file.remove(here::here("data", "example_data.csv"))
   1. Read example datasets from the **b3data** data package ([link](https://github.com/b-cubed-eu/b3data-scripts))
      - `bird_cube_belgium_mgrs10` (tabular) and `mgrs10_refgrid_belgium` (polygon grid)
   2. Filter out data with minimal coord. uncertainty > 10 km
-  3. Join the dataframe and grid resources together
-  4. Visualise the number of bird species per grid cell
+  3. Calculate species richness
+  4. Visualise richness per grid cell (join with reference grid)
 - Create an R Markdown report (outside pipeline) that visualises the plot
 
 ---
 
-Hints:
+Tips and tricks:
 
 - Use **frictionless** and **sf** to read the data, see [this README](https://github.com/b-cubed-eu/b3data-scripts) on how to get the data
 - Use **dplyr** for data wrangling and joining of datasets
 - Use **sf** to restore the CRS after joining
-- Use **ggplot2** together with **sf** for visualisation
+- Use **ggplot2** for visualisation
+
+
+- Store the grid in a list to work with sf objects: `return(list(spatial_resource))`
+
+```r
+plot_richness(
+  richness_cube = bird_richness_df,
+  ref_grid = mgrs10_refgrid[[1]]
+)
+```
 
 ## Challenge 2
 
@@ -550,9 +560,9 @@ Hints:
 
 ### **tarchetypes** package
 
-- A companion package with **prebuilt target and pipeline archetypes**.
-- Simplifies complex workflows into **concise, readable syntax**.
-- Enhances **reproducibility** by standardizing common patterns.
+- A companion package with **prebuilt target and pipeline archetypes**
+- Simplifies complex workflows into **concise, readable syntax**
+- Enhances **reproducibility** by standardizing common patterns
 
 ---
 

@@ -560,9 +560,9 @@ plot_richness(
 
 ### **tarchetypes** package
 
-- A companion package with **prebuilt target and pipeline archetypes**.
-- Simplifies complex workflows into **concise, readable syntax**.
-- Enhances **reproducibility** by standardizing common patterns.
+- A companion package with **prebuilt target and pipeline archetypes**
+- Simplifies complex workflows into **concise, readable syntax**
+- Enhances **reproducibility** by standardizing common patterns
 
 ---
 

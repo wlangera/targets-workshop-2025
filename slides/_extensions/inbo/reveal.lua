@@ -11,7 +11,7 @@ function Header(el)
         pandoc.Div("", { class = "trapezium" }),
         pandoc.Div("", { class = "sidebar sidebar-tussen" }),
         vl_logo, inbo_logo,
-        pandoc.Div("www.vlaanderen.be/inbo", { class = "sidebar-url-tussen" })
+        pandoc.Div("https://b-cubed.eu/", { class = "sidebar-url-tussen" })
       }
     elseif el.level == 2 then
       vl_logo = pandoc.Image("Biodiversity building blocks for policy", "b3-logo.png")

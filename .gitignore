@@ -57,3 +57,11 @@ source/**/_targets/
 
 # Do not ignore the meta file
 !source/**/_targets/meta/meta
+
+# Ignore all .html and .png files globally
+*.html
+*.png
+
+# But do NOT ignore them in slides/_extensions/inbo
+!slides/_extensions/inbo/*.html
+!slides/_extensions/inbo/*.png

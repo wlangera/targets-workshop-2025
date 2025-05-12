@@ -5,6 +5,7 @@
 
 # Load packages required to define the pipeline:
 library(targets)
+library(tarchetypes)
 library(here)
 
 # Set target options:
@@ -69,13 +70,11 @@ list(
       top_n = 20
     )
   ),
-  tar_target(
+  tar_group_by(
     top_species_data,
     bird_cube_2020 |>
-      dplyr::filter(species %in% top_species) |>
-      dplyr::group_by(species) |>
-      tar_group(),
-    iteration = "group"
+      dplyr::filter(species %in% top_species),
+    species
   ),
   tar_target(
     top_species_presence,

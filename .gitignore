@@ -51,3 +51,9 @@ renv/library
 rsconnect/
 vignettes/*.html
 vignettes/*.pdf
+
+# Ignore all _targets folders under source/
+source/**/_targets/
+
+# Do not ignore the meta file
+!source/**/_targets/meta/meta

@@ -2,25 +2,28 @@
 
 // Fonts
 
-$font-family-sans-serif: Cailibri, Source Sans Pro, Helvetica, sans-serif;
+$font-family-sans-serif: Montserrat;
 
 // Colors
 
-$inbo-blauw: #356196;
-$inbo-fuchsia: #c04384;
-$wit: #ffffff;
-$zwart: #000000;
+$bcubed-light: #EFF8F5;
+$bcubed-dark: #002121;
+$bcubed-green1: #48A529;
+$bcubed-green2: #6CDDB4;
+$bcubed-green3: #005957;
+$white: #ffffff;
+$black: #000000;
 
-$inboqmd-slide-bg: $wit;
-$inboqmd-slide-color: $zwart;
-$inboqmd-level1-bg: $inbo-fuchsia;
-$inboqmd-level1-color: $zwart;
-$inboqmd-level2-color: $inbo-fuchsia;
-$inboqmd-link-color: $inbo-blauw;
+$bcubedqmd-slide-bg: $white;
+$bcubedqmd-slide-color: $black;
+$bcubedqmd-level1-bg: $white;
+$bcubedqmd-level1-color: $bcubed-green3;
+$bcubedqmd-level2-color: $bcubed-green1;
+$bcubedqmd-link-color: $bcubed-green2;
 
-$body-bg: $inboqmd-slide-bg;
-$body-color: $inboqmd-slide-color;
-$link-color: $inboqmd-link-color;
+$body-bg: $bcubedqmd-slide-bg;
+$body-color: $bcubedqmd-slide-color;
+$link-color: $bcubedqmd-link-color;
 
 /*-- scss:rules --*/
 
@@ -32,27 +35,27 @@ $link-color: $inboqmd-link-color;
   clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
   width: 100%;
   height: 700px;
-  background: $inboqmd-level1-bg;
+  background: $bcubed-light;
 }
 
 .reveal h1 {
-  color: $inboqmd-level1-color;
+  color: $bcubedqmd-level1-color;
   margin: 30% 10% 0% 10%;
 }
 
 .subtitle {
-  color: $inboqmd-level1-color;
+  color: $bcubedqmd-level1-color;
   font-size: 1.5em;
   font-weight: bold;
 }
 
 .date {
-  color: $inboqmd-level1-color;
-  font-size: 1.5em;
+  color: $bcubedqmd-level1-color;
+  font-size: 1em;
 }
 
 .reveal h2 {
-  color: $inboqmd-level2-color;
+  color: $bcubedqmd-level2-color;
 }
 
 .reveal h1.title {
@@ -61,7 +64,7 @@ $link-color: $inboqmd-link-color;
 }
 
 .reveal .email {
-  color: $inboqmd-level1-color;
+  color: $bcubedqmd-level1-color;
 }
 
 #title-slide {
@@ -82,12 +85,19 @@ $link-color: $inboqmd-link-color;
 .title-inbo {
   position: fixed;
   right: 0;
-  top: -90px;
+  top: -60px;
   width: 230px;
   border: 10px;
-  border-color: $wit;
+  border-color: $white;
   border-style: solid;
   padding: 0;
+}
+
+.title-eu-funded {
+  position: fixed;
+  left: 0;
+  top: -150px;
+  width: 250px;
 }
 
 .vl-tussen {
@@ -104,7 +114,6 @@ $link-color: $inboqmd-link-color;
   width: 200px;
 }
 
-
 .vl-slide {
   position: absolute;
   left: 0%;
@@ -114,7 +123,7 @@ $link-color: $inboqmd-link-color;
 }
 
 .sidebar {
-  background-color: $inboqmd-level1-bg;
+  background-color: $bcubedqmd-level1-color;
   position: fixed;
   left: -70px;
   bottom: -39px;
@@ -123,23 +132,23 @@ $link-color: $inboqmd-link-color;
 }
 
 .sidebar-tussen {
-  background-color: $inboqmd-level1-color;
+  background-color: $bcubedqmd-level1-color;
   width: 51px;
 }
 
 .sidebar-url {
-  color: $inboqmd-level1-color;
+  color: $bcubedqmd-level1-bg;
   transform: rotate(-90deg);
-  font-size: 0.5em;
+  font-size: 0.7em;
   position: fixed;
   left: -150px;
   bottom: 15%;
 }
 
 .sidebar-url-tussen {
-  color: $inboqmd-level1-bg;
+  color: $bcubedqmd-level1-bg;
   transform: rotate(-90deg);
-  font-size: 0.5em;
+  font-size: 0.7em;
   position: fixed;
   left: -150px;
   bottom: 15%;
@@ -166,5 +175,5 @@ $link-color: $inboqmd-link-color;
 }
 
 .reveal code {
-  color: $inboqmd-slide-color;
+  color: $bcubedqmd-slide-color;
 }

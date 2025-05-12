@@ -1,6 +1,13 @@
 # targets workshop BMK (2025)
 
-Workshop of {[targets](https://books.ropensci.org/targets/)} R package INBO 2025.
+[Langeraert, Ward![ORCID logo](https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png)](https://orcid.org/0000-0002-5900-8109)[^aut][^INBO]
+European Union's Horizon Europe Research and Innovation Programme (ID No 101059592)[^fnd]
+
+[^fnd]: funder
+[^aut]: author
+[^INBO]: Research Institute for Nature and Forest (INBO), Herman Teirlinckgebouw, Havenlaan 88 PO Box 73, B-1000 Brussels, Belgium
+
+Workshop of {[targets](https://books.ropensci.org/targets/)} R package for team BMK (INBO, 2025).
 
 The slides are provided in `slides/slides.qmd`.
 They can be rendered using different tools as explained [here](https://quarto.org/docs/get-started/hello/rstudio.html#rendering).

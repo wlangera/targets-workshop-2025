@@ -556,7 +556,7 @@ plot_richness(
 
 ## Challenge 2
 
-- Built further on your pipeline from *Challenge 1*
+- Build further on your pipeline from *Challenge 1*
   - Filter the data
     - 2020
     - Top 20 species that occur in most grid cells

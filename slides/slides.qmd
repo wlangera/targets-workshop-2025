@@ -601,7 +601,6 @@ plot_richness(
   - `challenge-1-solution`
   - `challenge-2-solution`
   - `challenge-3-solution`
-  - merged with `main` after the workshop
 
 :::
 

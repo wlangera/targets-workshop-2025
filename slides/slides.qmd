@@ -103,11 +103,17 @@ plot_model <- function(model, data) {
 dir.create(here::here("data"), showWarnings = FALSE)
 ```
 
-```{r}
+```r
 readr::write_csv(
   airquality,
   here::here("data", "example_data.csv")
 )
+```
+
+\
+
+```{r, echo=TRUE}
+head(airquality, n = 4)
 ```
 
 ---
@@ -416,11 +422,12 @@ tar_make(
 - Useful for one-to-one processing
 
 ```r
-tar_target(files, list("a.csv", "b.csv", "c.csv"))
-tar_target(data, read_csv(files), pattern = map(files))
+tar_target(a, c(1, 2))
+tar_target(b, c("x", "y"))
+tar_target(result, paste0("result", a, b), pattern = map(a, b))
 ```
 
-➡ Creates one branch per file
+➡ Creates: `result1x`, `result2y`
 
 ---
 
@@ -431,10 +438,10 @@ tar_target(data, read_csv(files), pattern = map(files))
 ```r
 tar_target(a, c(1, 2))
 tar_target(b, c("x", "y"))
-tar_target(result, paste(a, b), pattern = cross(a, b))
+tar_target(result, paste0("result", a, b), pattern = cross(a, b))
 ```
 
-➡ Creates: `result_1_1`, `result_1_2`, `result_2_1`, `result_2_2`
+➡ Creates: `result1x`, `result1y` `result2x`, `result2y`
 
 ---
 
@@ -519,9 +526,6 @@ tar_destroy(
   store = here::here("source", "pipeline_example", "_targets"),
   ask = FALSE
 )
-
-# Remove example data
-file.remove(here::here("data", "example_data.csv"))
 ```
 
 # Exercises

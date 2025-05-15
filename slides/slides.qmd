@@ -103,11 +103,17 @@ plot_model <- function(model, data) {
 dir.create(here::here("data"), showWarnings = FALSE)
 ```
 
-```{r}
+```r
 readr::write_csv(
   airquality,
   here::here("data", "example_data.csv")
 )
+```
+
+\
+
+```{r, echo=TRUE}
+head(airquality, n = 4)
 ```
 
 ---
@@ -519,9 +525,6 @@ tar_destroy(
   store = here::here("source", "pipeline_example", "_targets"),
   ask = FALSE
 )
-
-# Remove example data
-file.remove(here::here("data", "example_data.csv"))
 ```
 
 # Exercises

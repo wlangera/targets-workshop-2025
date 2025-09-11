@@ -1,0 +1,26 @@
+---
+title: "Challenge 1"
+author: "Sanne Govaert"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+script = here::here("source", "pipeline_challenge1_sanne", "_targets.R")
+store = here::here("source", "pipeline_challenge1_sanne", "_targets")
+```
+
+
+```{r}
+tar_visnetwork(script = script, store = store)
+tar_make(script = script, store = store)
+```
+
+```{r}
+tar_read("plot", store = store)
+```
+

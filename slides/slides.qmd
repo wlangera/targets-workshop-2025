@@ -12,6 +12,9 @@ author:
 lang: en
 format:
   inbo-revealjs:
+    output-file: slides.html
+    chalkboard: false
+    embed-resources: true
     menu:
       useTextContentForMissingTitles: false
       hideMissingTitles: true

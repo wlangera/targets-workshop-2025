@@ -63,5 +63,6 @@ source/**/_targets/
 *.png
 
 # But do NOT ignore them in slides/_extensions/inbo
+!slides/*.html
 !slides/_extensions/inbo/*.html
 !slides/_extensions/inbo/*.png

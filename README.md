@@ -9,8 +9,8 @@ European Union's Horizon Europe Research and Innovation Programme (ID No 1010595
 
 Workshop of {[targets](https://books.ropensci.org/targets/)} R package for team BMK (INBO, 2025).
 
-The slides are provided in `slides/slides.qmd`.
-They can be rendered using different tools as explained [here](https://quarto.org/docs/get-started/hello/rstudio.html#rendering).
+The slides are provided in `slides/slides.html`.
+They can be rendered from `slides/slides.qmd` using different tools as explained [here](https://quarto.org/docs/get-started/hello/rstudio.html#rendering).
 
 ## Which packages to install for completing the exercises.
 
